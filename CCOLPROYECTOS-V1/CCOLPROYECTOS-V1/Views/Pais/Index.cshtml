@@ -109,16 +109,16 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>
+                        <td class="text-center">
                             @Html.DisplayFor(modelItem => item.codigoPais)
                         </td>
-                        <td>
+                        <td class="text-left">
                             @Html.DisplayFor(modelItem => item.nombrePais)
                         </td>
                         <td class="text-center">
-                            <a href="@Url.Action("Edit", "Cargoes",  new { id = item.id })" title="Editar datos" class="btn btn-sm btn-info"><img src="http://icons.iconarchive.com/icons/designcontest/outline/256/Pencil-icon.png" width="20" height="20"></a>
-                            <a href="@Url.Action("Delete", "Cargoes",  new { id = item.id })" title="Eliminar" class="btn btn-sm btn-danger"><img src="https://findicons.com/files/icons/1580/devine_icons_part_2/128/trash_recyclebin_empty_closed.png" width="20" height="20"></a>
-                            <!--<a href="@Url.Action("Details", "Cargoes",  new { id = item.id })" title="Ver Datos" class="btn btn-sm btn-success"><img src="https://cdn0.iconfinder.com/data/icons/files-documents/512/YPS__file_document_enlarge_magnifier_magnify_examine_read_paper_page_text-128.png" width="20" height="20"></a>-->
+                            <a href="@Url.Action("Edit", "Pais",  new { id = item.id })" title="Editar datos" class="btn btn-sm btn-info"><img src="http://icons.iconarchive.com/icons/designcontest/outline/256/Pencil-icon.png" width="20" height="20"></a>
+                            <a href="@Url.Action("Delete", "Pais",  new { id = item.id })" title="Eliminar" class="btn btn-sm btn-danger"><img src="https://findicons.com/files/icons/1580/devine_icons_part_2/128/trash_recyclebin_empty_closed.png" width="20" height="20"></a>
+                            <!--<a href="@Url.Action("Details", "Pais",  new { id = item.id })" title="Ver Datos" class="btn btn-sm btn-success"><img src="https://cdn0.iconfinder.com/data/icons/files-documents/512/YPS__file_document_enlarge_magnifier_magnify_examine_read_paper_page_text-128.png" width="20" height="20"></a>-->
                         </td>
                     </tr>
                 }

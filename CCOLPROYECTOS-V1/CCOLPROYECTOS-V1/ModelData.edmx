@@ -137,6 +137,11 @@
           <Property Name="valorServicio" Type="int" Nullable="false" />
           <Property Name="lineaServicio" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="idUsuarioSer" Type="int" Nullable="false" />
+          <Property Name="idCliente" Type="int" />
+          <Property Name="idEstadoSP" Type="int" />
+          <Property Name="idCiudad" Type="int" />
+          <Property Name="idRecursoT" Type="int" />
+          <Property Name="idLineaT" Type="int" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -352,6 +357,66 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Servicio_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="idCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_EstadoSerPro">
+          <End Role="EstadoSerPro" Type="Self.EstadoSerPro" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoSerPro">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="idEstadoSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_LineaTrabajo">
+          <End Role="LineaTrabajo" Type="Self.LineaTrabajo" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LineaTrabajo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="idLineaT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_RecursoTecnico">
+          <End Role="RecursoTecnico" Type="Self.RecursoTecnico" Multiplicity="0..1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecursoTecnico">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="idRecursoT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Servicio_Usuario">
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
           <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
@@ -480,6 +545,26 @@
             <End Role="Servicio" EntitySet="Servicio" />
             <End Role="SerPro" EntitySet="SerPro" />
           </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Ciudad" Association="Self.FK_Servicio_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Cliente" Association="Self.FK_Servicio_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_EstadoSerPro" Association="Self.FK_Servicio_EstadoSerPro">
+            <End Role="EstadoSerPro" EntitySet="EstadoSerPro" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_LineaTrabajo" Association="Self.FK_Servicio_LineaTrabajo">
+            <End Role="LineaTrabajo" EntitySet="LineaTrabajo" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_RecursoTecnico" Association="Self.FK_Servicio_RecursoTecnico">
+            <End Role="RecursoTecnico" EntitySet="RecursoTecnico" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
           <AssociationSet Name="FK_Servicio_Usuario" Association="Self.FK_Servicio_Usuario">
             <End Role="Usuario" EntitySet="Usuario" />
             <End Role="Servicio" EntitySet="Servicio" />
@@ -533,6 +618,7 @@
           <NavigationProperty Name="Departamento" Relationship="Self.FK_Ciudad_Departamento" FromRole="Ciudad" ToRole="Departamento" />
           <NavigationProperty Name="SerPro" Relationship="Self.FK_SerPro_Ciudad" FromRole="Ciudad" ToRole="SerPro" />
           <NavigationProperty Name="Proyecto" Relationship="CCOLPROYECTOSModel.FK_Proyecto_Ciudad" FromRole="Ciudad" ToRole="Proyecto" />
+          <NavigationProperty Name="Servicio" Relationship="CCOLPROYECTOSModel.FK_Servicio_Ciudad" FromRole="Ciudad" ToRole="Servicio" />
         </EntityType>
         <EntityType Name="Cliente">
           <Key>
@@ -545,6 +631,7 @@
           <Property Name="rutCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="SerPro" Relationship="Self.FK_SerPro_Cliente" FromRole="Cliente" ToRole="SerPro" />
           <NavigationProperty Name="Proyecto" Relationship="CCOLPROYECTOSModel.FK_Proyceto_Cliente" FromRole="Cliente" ToRole="Proyecto" />
+          <NavigationProperty Name="Servicio" Relationship="CCOLPROYECTOSModel.FK_Servicio_Cliente" FromRole="Cliente" ToRole="Servicio" />
         </EntityType>
         <EntityType Name="Departamento">
           <Key>
@@ -566,6 +653,7 @@
           <Property Name="codEstado" Type="Int32" Nullable="false" />
           <NavigationProperty Name="SerPro" Relationship="Self.FK_SerPro_EstadoSerPro" FromRole="EstadoSerPro" ToRole="SerPro" />
           <NavigationProperty Name="Proyecto" Relationship="CCOLPROYECTOSModel.FK_Proyceto_EstadoSerPro" FromRole="EstadoSerPro" ToRole="Proyecto" />
+          <NavigationProperty Name="Servicio" Relationship="CCOLPROYECTOSModel.FK_Servicio_EstadoSerPro" FromRole="EstadoSerPro" ToRole="Servicio" />
         </EntityType>
         <EntityType Name="LineaTrabajo">
           <Key>
@@ -575,6 +663,7 @@
           <Property Name="nombreLineaT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="SerPro" Relationship="Self.FK_SerPro_LineaTrabajo" FromRole="LineaTrabajo" ToRole="SerPro" />
           <NavigationProperty Name="Proyecto" Relationship="CCOLPROYECTOSModel.FK_Proyecto_LineaTrabajo" FromRole="LineaTrabajo" ToRole="Proyecto" />
+          <NavigationProperty Name="Servicio" Relationship="CCOLPROYECTOSModel.FK_Servicio_LineaTrabajo" FromRole="LineaTrabajo" ToRole="Servicio" />
         </EntityType>
         <EntityType Name="Pais">
           <Key>
@@ -634,6 +723,7 @@
           <Property Name="descripRecursoT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SerPro" Relationship="Self.FK_SerPro_RecursoTecnico" FromRole="RecursoTecnico" ToRole="SerPro" />
           <NavigationProperty Name="Proyecto" Relationship="CCOLPROYECTOSModel.FK_Proyecto_RecursoTecnico" FromRole="RecursoTecnico" ToRole="Proyecto" />
+          <NavigationProperty Name="Servicio" Relationship="CCOLPROYECTOSModel.FK_Servicio_RecursoTecnico" FromRole="RecursoTecnico" ToRole="Servicio" />
         </EntityType>
         <EntityType Name="SerPro">
           <Key>
@@ -668,6 +758,16 @@
           <Property Name="idUsuarioSer" Type="Int32" Nullable="false" />
           <NavigationProperty Name="SerPro" Relationship="Self.FK_SerPro_Servicio" FromRole="Servicio" ToRole="SerPro" />
           <NavigationProperty Name="Usuario" Relationship="Self.FK_Servicio_Usuario" FromRole="Servicio" ToRole="Usuario" />
+          <Property Name="idCliente" Type="Int32" />
+          <Property Name="idEstadoSP" Type="Int32" />
+          <Property Name="idCiudad" Type="Int32" />
+          <Property Name="idRecursoT" Type="Int32" />
+          <Property Name="idLineaT" Type="Int32" />
+          <NavigationProperty Name="Ciudad" Relationship="CCOLPROYECTOSModel.FK_Servicio_Ciudad" FromRole="Servicio" ToRole="Ciudad" />
+          <NavigationProperty Name="Cliente" Relationship="CCOLPROYECTOSModel.FK_Servicio_Cliente" FromRole="Servicio" ToRole="Cliente" />
+          <NavigationProperty Name="EstadoSerPro" Relationship="CCOLPROYECTOSModel.FK_Servicio_EstadoSerPro" FromRole="Servicio" ToRole="EstadoSerPro" />
+          <NavigationProperty Name="LineaTrabajo" Relationship="CCOLPROYECTOSModel.FK_Servicio_LineaTrabajo" FromRole="Servicio" ToRole="LineaTrabajo" />
+          <NavigationProperty Name="RecursoTecnico" Relationship="CCOLPROYECTOSModel.FK_Servicio_RecursoTecnico" FromRole="Servicio" ToRole="RecursoTecnico" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -972,6 +1072,26 @@
             <End Role="RecursoTecnico" EntitySet="RecursoTecnico" />
             <End Role="Proyecto" EntitySet="Proyecto" />
           </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Ciudad" Association="CCOLPROYECTOSModel.FK_Servicio_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Cliente" Association="CCOLPROYECTOSModel.FK_Servicio_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_EstadoSerPro" Association="CCOLPROYECTOSModel.FK_Servicio_EstadoSerPro">
+            <End Role="EstadoSerPro" EntitySet="EstadoSerPro" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_LineaTrabajo" Association="CCOLPROYECTOSModel.FK_Servicio_LineaTrabajo">
+            <End Role="LineaTrabajo" EntitySet="LineaTrabajo" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_RecursoTecnico" Association="CCOLPROYECTOSModel.FK_Servicio_RecursoTecnico">
+            <End Role="RecursoTecnico" EntitySet="RecursoTecnico" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_Proyecto_Ciudad">
           <End Type="CCOLPROYECTOSModel.Ciudad" Role="Ciudad" Multiplicity="0..1" />
@@ -1029,6 +1149,66 @@
               <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Proyecto">
+              <PropertyRef Name="idRecursoT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Ciudad">
+          <End Type="CCOLPROYECTOSModel.Ciudad" Role="Ciudad" Multiplicity="0..1" />
+          <End Type="CCOLPROYECTOSModel.Servicio" Role="Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="idCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Cliente">
+          <End Type="CCOLPROYECTOSModel.Cliente" Role="Cliente" Multiplicity="0..1" />
+          <End Type="CCOLPROYECTOSModel.Servicio" Role="Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_EstadoSerPro">
+          <End Type="CCOLPROYECTOSModel.EstadoSerPro" Role="EstadoSerPro" Multiplicity="0..1" />
+          <End Type="CCOLPROYECTOSModel.Servicio" Role="Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoSerPro">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="idEstadoSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_LineaTrabajo">
+          <End Type="CCOLPROYECTOSModel.LineaTrabajo" Role="LineaTrabajo" Multiplicity="0..1" />
+          <End Type="CCOLPROYECTOSModel.Servicio" Role="Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LineaTrabajo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="idLineaT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_RecursoTecnico">
+          <End Type="CCOLPROYECTOSModel.RecursoTecnico" Role="RecursoTecnico" Multiplicity="0..1" />
+          <End Type="CCOLPROYECTOSModel.Servicio" Role="Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecursoTecnico">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Servicio">
               <PropertyRef Name="idRecursoT" />
             </Dependent>
           </ReferentialConstraint>
@@ -1175,6 +1355,11 @@
           <EntitySetMapping Name="Servicio">
             <EntityTypeMapping TypeName="CCOLPROYECTOSModel.Servicio">
               <MappingFragment StoreEntitySet="Servicio">
+                <ScalarProperty Name="idLineaT" ColumnName="idLineaT" />
+                <ScalarProperty Name="idRecursoT" ColumnName="idRecursoT" />
+                <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
+                <ScalarProperty Name="idEstadoSP" ColumnName="idEstadoSP" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="codigoServicio" ColumnName="codigoServicio" />
                 <ScalarProperty Name="nombreServicio" ColumnName="nombreServicio" />

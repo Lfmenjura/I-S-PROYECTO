@@ -28,9 +28,10 @@
                 <dt>
                     <ul class="nav navbar-nav">
 
-                        <li >@Html.ActionLink("ADMINISTRATIVO", "Index", "Cargoes")</li>
+                        <li>@Html.ActionLink("ADMINISTRATIVO", "Index", "Cargoes")</li>
                         <li>@Html.ActionLink("PROYECTOS", "Index", "Proyectoes")</li>
                         <li>@Html.ActionLink("SERVICIOS", "Index", "Servicios")</li>
+                        <li>@Html.ActionLink("INFORMES", "Index", "Informes")</li>
 
 
                     </ul>
@@ -38,9 +39,11 @@
 
                 <ul class="nav navbar-nav navbar-right">
                     
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> CERRAR SESION</a></li>
 
-                    
+
+                    <li><a href="@Url.Action("Login", "Login")"><span class="glyphicon glyphicon-off"></span> CERRAR SESIÓN</a></li>
+
+
 
                 </ul>
             

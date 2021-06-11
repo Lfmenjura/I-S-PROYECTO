@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<div class="jumbotron " style="        border: 4px solid #002F65">
+    <div class="row">
+        <h2 class="text-center " style="color:darkblue">BIENVENIDO AL SISTEMA WEB DE PROYECTOS Y SERVICIOS</h2>
+
+        <div class="item">
+            <img class="center-block" src="Img/USUARIO.png" width=" 100" height="100">
+        </div>
+
+
+        <form action="@Url.Content("~/Login/Login")" method="post">
+            <div class="form-group text-center">
+                <div class="text-danger ">
+                    @ViewBag.Error
+                </div>
+                <div class="col-md-5 text-right">
+                    <label>Usuario</label>
+                </div>
+                <div class="col-md-6 text-left">
+                    <input type="email" name="User" />
+                </div>
+            </div>
+            <br>
+            <br>
+
+            <div class="form-group text-center ">
+                <div class="col-md-5 text-right">
+                    <label>Contraseña</label>
+                </div>
+                <div class="col-md-6 text-left">
+                    <input type="password" name="Pass" />
+                </div>
+
+            </div>
+            <br>
+            <br>
+
+            <div class="form-group text-center">
+
+                <div class=" text-center">
+                    
+                    <a href="javascript:abrir()">¿Haz olvidado tu contraseña?</a>
+                    <br>
+                    <input type="submit" value="Entrar" class="btn btn-primary" />
+
+
+                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+

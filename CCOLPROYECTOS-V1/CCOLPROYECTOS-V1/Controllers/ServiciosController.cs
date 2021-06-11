@@ -17,7 +17,7 @@ namespace CCOLPROYECTOS_V1.Controllers
         // GET: Servicios
         public ActionResult Index()
         {
-            var servicio = db.Servicio.Include(s => s.Usuario);
+            var servicio = db.Servicio.Include(s => s.Usuario).Include(s => s.Ciudad).Include(s => s.Cliente).Include(s => s.EstadoSerPro).Include(s => s.LineaTrabajo).Include(s => s.RecursoTecnico);
             return View(servicio.ToList());
         }
 
@@ -40,6 +40,11 @@ namespace CCOLPROYECTOS_V1.Controllers
         public ActionResult Create()
         {
             ViewBag.idUsuarioSer = new SelectList(db.Usuario, "id", "correoUsuario");
+            ViewBag.idCiudad = new SelectList(db.Ciudad, "id", "nombreCiudad");
+            ViewBag.idCliente = new SelectList(db.Cliente, "id", "nombreCliente");
+            ViewBag.idEstadoSP = new SelectList(db.EstadoSerPro, "id", "nombreEstadoSerPro");
+            ViewBag.idLineaT = new SelectList(db.LineaTrabajo, "id", "nombreLineaT");
+            ViewBag.idRecursoT = new SelectList(db.RecursoTecnico, "id", "tipoRecursoT");
             return View();
         }
 
@@ -48,7 +53,7 @@ namespace CCOLPROYECTOS_V1.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,codigoServicio,nombreServicio,fechaServicio,valorServicio,lineaServicio,idUsuarioSer")] Servicio servicio)
+        public ActionResult Create([Bind(Include = "id,codigoServicio,nombreServicio,fechaServicio,valorServicio,lineaServicio,idUsuarioSer,idCliente,idEstadoSP,idCiudad,idRecursoT,idLineaT")] Servicio servicio)
         {
             if (ModelState.IsValid)
             {
@@ -58,6 +63,11 @@ namespace CCOLPROYECTOS_V1.Controllers
             }
 
             ViewBag.idUsuarioSer = new SelectList(db.Usuario, "id", "correoUsuario", servicio.idUsuarioSer);
+            ViewBag.idCiudad = new SelectList(db.Ciudad, "id", "nombreCiudad", servicio.idCiudad);
+            ViewBag.idCliente = new SelectList(db.Cliente, "id", "nombreCliente", servicio.idCliente);
+            ViewBag.idEstadoSP = new SelectList(db.EstadoSerPro, "id", "nombreEstadoSerPro", servicio.idEstadoSP);
+            ViewBag.idLineaT = new SelectList(db.LineaTrabajo, "id", "nombreLineaT", servicio.idLineaT);
+            ViewBag.idRecursoT = new SelectList(db.RecursoTecnico, "id", "tipoRecursoT", servicio.idRecursoT);
             return View(servicio);
         }
 
@@ -74,6 +84,11 @@ namespace CCOLPROYECTOS_V1.Controllers
                 return HttpNotFound();
             }
             ViewBag.idUsuarioSer = new SelectList(db.Usuario, "id", "correoUsuario", servicio.idUsuarioSer);
+            ViewBag.idCiudad = new SelectList(db.Ciudad, "id", "nombreCiudad", servicio.idCiudad);
+            ViewBag.idCliente = new SelectList(db.Cliente, "id", "nombreCliente", servicio.idCliente);
+            ViewBag.idEstadoSP = new SelectList(db.EstadoSerPro, "id", "nombreEstadoSerPro", servicio.idEstadoSP);
+            ViewBag.idLineaT = new SelectList(db.LineaTrabajo, "id", "nombreLineaT", servicio.idLineaT);
+            ViewBag.idRecursoT = new SelectList(db.RecursoTecnico, "id", "tipoRecursoT", servicio.idRecursoT);
             return View(servicio);
         }
 
@@ -82,7 +97,7 @@ namespace CCOLPROYECTOS_V1.Controllers
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,codigoServicio,nombreServicio,fechaServicio,valorServicio,lineaServicio,idUsuarioSer")] Servicio servicio)
+        public ActionResult Edit([Bind(Include = "id,codigoServicio,nombreServicio,fechaServicio,valorServicio,lineaServicio,idUsuarioSer,idCliente,idEstadoSP,idCiudad,idRecursoT,idLineaT")] Servicio servicio)
         {
             if (ModelState.IsValid)
             {
@@ -91,6 +106,11 @@ namespace CCOLPROYECTOS_V1.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.idUsuarioSer = new SelectList(db.Usuario, "id", "correoUsuario", servicio.idUsuarioSer);
+            ViewBag.idCiudad = new SelectList(db.Ciudad, "id", "nombreCiudad", servicio.idCiudad);
+            ViewBag.idCliente = new SelectList(db.Cliente, "id", "nombreCliente", servicio.idCliente);
+            ViewBag.idEstadoSP = new SelectList(db.EstadoSerPro, "id", "nombreEstadoSerPro", servicio.idEstadoSP);
+            ViewBag.idLineaT = new SelectList(db.LineaTrabajo, "id", "nombreLineaT", servicio.idLineaT);
+            ViewBag.idRecursoT = new SelectList(db.RecursoTecnico, "id", "tipoRecursoT", servicio.idRecursoT);
             return View(servicio);
         }
 

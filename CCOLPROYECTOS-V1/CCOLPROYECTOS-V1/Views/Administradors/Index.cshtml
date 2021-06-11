@@ -3,8 +3,6 @@
 @{
     ViewBag.Title = "Index";
 }
-<!DOCTYPE html>
-<html lang="es">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,8 +11,11 @@
     <script src="~/Scripts/jquery-1.9.1.js"></script>
     <script src="~/Scripts/bootstrap.js"></script>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    @*<script src="~/Scripts/employee.js"></script>*@
-    <title>CCOL PROTECTOS </title>
+    <script src="~/Scripts/employee.js"></script>
+    <title>CCOL PROYCETOS </title>
+    <script src="js/sha1.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <script src="http://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
 
@@ -32,30 +33,33 @@
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+
     <![endif]-->
-    
 
     <script type="text/javascript">
         $(document).ready(function () {
-            (function ($) {
-                $('#filtrar').keyup(function () {
-                    var rex = new RegExp($(this).val(), 'i');
-                    $('.buscar tr').hide();
-                    $('.buscar tr').filter(function () {
-                        return rex.test($(this).text());
-                    }).show();
-                })
-            }(jQuery));
-        });
+            $('#entradafilter').keyup(function () {
+                var rex = new RegExp($(this).val(), 'i');
+                $('.contenidobusqueda tr').hide();
+                $('.contenidobusqueda tr').filter(function () {
+                    return rex.test($(this).text());
+                }).show();
+
+            })
+
+        })
     </script>
+   
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
 
 </head>
 <p>
 
 </p>
-
 <body>
-    <nav class="navbar " style=" background-color:aliceblue">
+    <nav class="navbar container-fluid" style=" background-color:aliceblue">
         <ul class="nav navbar-nav">
 
             <li>@Html.ActionLink("CARGOS", "Index", "Cargoes")</li>
@@ -65,87 +69,77 @@
             <li>@Html.ActionLink("UBICACION", "Index", "Pais")</li>
             <li>@Html.ActionLink("RECURSO TECNICO", "Index", "RecursoTecnicoes")</li>
             <li>@Html.ActionLink("PERSONA", "Index", "Personas")</li>
-            <li>@Html.ActionLink("USUARIO", "Index", "Personas")</li>
+            <li>@Html.ActionLink("USUARIO", "Index", "Usuarios")</li>
             <li>@Html.ActionLink("ADMIN", "Index", "Administradors")</li>
         </ul>
 
     </nav>
-    <p>
-        <div class="container">
-            <h2>ADMINISTRADOR</h2>
-            <div class="pull-right">
+    <h2 class="text-center " style="color:darkblue">ADMINISTRADOR</h2>
+    <div class="container-fluid ">
 
-    <p>
-        <a href="@Url.Action("Create", "Administradors")" title="Editar datos" class="btn btn-primary">
-            <img src="https://previews.123rf.com/images/123vector/123vector1710/123vector171000257/88355140-ilustraci%C3%B3n-del-signo-m%C3%A1s-icono-de-c%C3%ADrculo-verde.jpg" width="20" height="20">
-            <span><strong>Agregar Administrador </strong></span>
-        </a>
+        <p>
 
-    </p>
+            <a href="@Url.Action("Create", "Administradors")" title="Editar datos" class="btn btn-primary">
+                <img src="https://previews.123rf.com/images/123vector/123vector1710/123vector171000257/88355140-ilustraci%C3%B3n-del-signo-m%C3%A1s-icono-de-c%C3%ADrculo-verde.jpg" width="20" height="20">
 
+                <span><strong>Agregar Administrador</strong></span>
+            </a>
+        </p>
     </div>
-    </div>
-    </p>
     <p></p>
+
+    <div class="input-group">
+        <span class="input-group-addon">Buscar</span>
+        <input id="entradafilter" type="text" class="form-control" placeholder="Ingresa el dato que desees buscar...">
+    </div><p></p>
     <div class="col-md-12">
-        <div class="input-group">
-            <span class="input-group-addon">Buscar</span>
-            <input id="filtrar" type="text" class="form-control" placeholder="Ingresa el dato que desees buscar...">
-        </div><p></p>
-        <div class="col-md-12">
-            <table id="tblProduct" class="table table-striped table-bordered" width="100%">
+        <table id="tblProduct" class="table table-striped table-bordered" width="100%">
 
-                <thead>
+            <thead>
+
+            <thead>
+                <tr>
+                    <th @Html.DisplayNameFor(model => model.codigoAdmin)>
+                        CÓDIGO
+                    </th>
+                    <th @Html.DisplayNameFor(model => model.Persona.nombrePersona)>
+                        NOMBRE
+                    </th>
+                    <th @Html.DisplayNameFor(model => model.correoAdmin)>
+                        CORREO
+                    </th>
+                    
+
+                    <th>ACCIONES</th>
+                </tr>
+
+            </thead>
+
+
+            <tbody class="contenidobusqueda">
+
+                @foreach (var item in Model)
+                {
                     <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.codigoAdmin)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.correoAdmin)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.contraseñaAdmin)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.Persona.nombrePersona)
-                        </th>
-                        <th>ACCIONES</th>
+                        <td  class="text-center">
+                            @Html.DisplayFor(modelItem => item.codigoAdmin)
+                        </td>
+                        <td class="text-left">
+                            @Html.DisplayFor(modelItem => item.Persona.nombrePersona)
+                        </td>
+                        <td class="text-left">
+                            @Html.DisplayFor(modelItem => item.correoAdmin)
+                        </td>
+                        
+
+                        <td class="text-center">
+                            <a href="@Url.Action("Edit", "Administradors",  new { id = item.id })" title="Editar datos" class="btn btn-sm btn-info"><img src="http://icons.iconarchive.com/icons/designcontest/outline/256/Pencil-icon.png" width="20" height="20"></a>
+                            <a href="@Url.Action("Delete", "Administradors",  new { id = item.id })" title="Eliminar" class="btn btn-sm btn-danger"><img src="https://findicons.com/files/icons/1580/devine_icons_part_2/128/trash_recyclebin_empty_closed.png" width="20" height="20"></a>
+                            <!--<a href="@Url.Action("Details", "Administradors",  new { id = item.id })" title="Ver Datos" class="btn btn-sm btn-success"><img src="https://cdn0.iconfinder.com/data/icons/files-documents/512/YPS__file_document_enlarge_magnifier_magnify_examine_read_paper_page_text-128.png" width="20" height="20"></a>-->
+                        </td>
                     </tr>
-
-                </thead>
-
-
-                <tbody class="buscar">
-
-                    @foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.codigoAdmin)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.correoAdmin)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.contraseñaAdmin)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Persona.nombrePersona)
-                            </td>
-                            <td>
-                                <a href="@Url.Action("Edit", "Administradors",  new { id = item.id })" title="Editar datos" class="btn btn-sm btn-info"><img src="http://icons.iconarchive.com/icons/designcontest/outline/256/Pencil-icon.png" width="20" height="20"></a>
-                                <a href="@Url.Action("Delete", "Administradors",  new { id = item.id })" title="Eliminar" class="btn btn-sm btn-danger"><img src="https://findicons.com/files/icons/1580/devine_icons_part_2/128/trash_recyclebin_empty_closed.png" width="20" height="20"></a>
-                                <a href="@Url.Action("Details", "Administradors",  new { id = item.id })" title="Ver Datos" class="btn btn-sm btn-success"><img src="https://cdn0.iconfinder.com/data/icons/files-documents/512/YPS__file_document_enlarge_magnifier_magnify_examine_read_paper_page_text-128.png" width="20" height="20"></a>
-                            </td>
-
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
+                }
+            </tbody>
+        </table>
     </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="js/d3.v3.min.js"></script>
-    <script type="text/javascript" src="js/utilities.js"></script>
 </body>
-</html>

@@ -27,9 +27,19 @@ namespace CCOLPROYECTOS_V1
         public int valorServicio { get; set; }
         public string lineaServicio { get; set; }
         public int idUsuarioSer { get; set; }
+        public Nullable<int> idCliente { get; set; }
+        public Nullable<int> idEstadoSP { get; set; }
+        public Nullable<int> idCiudad { get; set; }
+        public Nullable<int> idRecursoT { get; set; }
+        public Nullable<int> idLineaT { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SerPro> SerPro { get; set; }
         public virtual Usuario Usuario { get; set; }
+        public virtual Ciudad Ciudad { get; set; }
+        public virtual Cliente Cliente { get; set; }
+        public virtual EstadoSerPro EstadoSerPro { get; set; }
+        public virtual LineaTrabajo LineaTrabajo { get; set; }
+        public virtual RecursoTecnico RecursoTecnico { get; set; }
     }
 }

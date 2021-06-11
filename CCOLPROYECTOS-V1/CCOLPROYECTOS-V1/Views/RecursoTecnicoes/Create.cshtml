@@ -4,50 +4,63 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>RecursoTecnico</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.tipoRecursoT, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.tipoRecursoT, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.tipoRecursoT, "", new { @class = "text-danger" })
-            </div>
+<div class=" jumbotron form-horizontal" style="        border: 4px solid #002F65">
+    <h2 class="text-center " style="color:darkblue">CREAR RECURSO TECNICO</h2>
+
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        <div class="col-md-2">
+            <dt>
+                REFERENCIA:
+            </dt>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.referenciaRecursoT, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.referenciaRecursoT, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.referenciaRecursoT, "", new { @class = "text-danger" })
-            </div>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.referenciaRecursoT, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.referenciaRecursoT, "", new { @class = "text-danger" })
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-2">
+            <dt>
+                TIPO:
+            </dt>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.marcaRecursoT, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.tipoRecursoT, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.tipoRecursoT, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-2">
+            <dt>
+                MARCA:
+            </dt>
+
             <div class="col-md-10">
                 @Html.EditorFor(model => model.marcaRecursoT, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.marcaRecursoT, "", new { @class = "text-danger" })
             </div>
         </div>
+     </DIV>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.valorRecursoT, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.valorRecursoT, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.valorRecursoT, "", new { @class = "text-danger" })
+            <div class="col-md-2">
+                <dt>
+                    DESCRIPCIÓN:
+                </dt>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.descripRecursoT, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.descripRecursoT, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.descripRecursoT, "", new { @class = "text-danger" })
@@ -55,13 +68,28 @@
         </div>
 
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+            <div class="col-md-2">
+                <dt>
+                    VALOR:
+                </dt>
+            </div>
+
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.valorRecursoT, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.valorRecursoT, "", new { @class = "text-danger" })
+
             </div>
         </div>
-    </div>
-}
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar" class="btn btn-success" />
+                <a href="@Url.Action("Index")" class="btn btn-primary">
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+                    <span><strong>Regresar a la Lista</strong></span>
+                </a>
+            </div>
+
+
+        </div>
+    </div>
+    }

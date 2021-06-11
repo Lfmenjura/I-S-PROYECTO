@@ -19,6 +19,7 @@ namespace CCOLPROYECTOS_V1
         {
             this.SerPro = new HashSet<SerPro>();
             this.Proyecto = new HashSet<Proyecto>();
+            this.Servicio = new HashSet<Servicio>();
         }
     
         public int id { get; set; }
@@ -32,5 +33,7 @@ namespace CCOLPROYECTOS_V1
         public virtual ICollection<SerPro> SerPro { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Proyecto> Proyecto { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Servicio> Servicio { get; set; }
     }
 }

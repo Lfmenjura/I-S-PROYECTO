@@ -40,6 +40,11 @@
         <AssociationConnector Association="CCOLPROYECTOSModel.FK_Proyceto_EstadoSerPro" />
         <AssociationConnector Association="CCOLPROYECTOSModel.FK_Proyecto_LineaTrabajo" />
         <AssociationConnector Association="CCOLPROYECTOSModel.FK_Proyecto_RecursoTecnico" />
+        <AssociationConnector Association="CCOLPROYECTOSModel.FK_Servicio_Ciudad" />
+        <AssociationConnector Association="CCOLPROYECTOSModel.FK_Servicio_Cliente" />
+        <AssociationConnector Association="CCOLPROYECTOSModel.FK_Servicio_EstadoSerPro" />
+        <AssociationConnector Association="CCOLPROYECTOSModel.FK_Servicio_LineaTrabajo" />
+        <AssociationConnector Association="CCOLPROYECTOSModel.FK_Servicio_RecursoTecnico" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

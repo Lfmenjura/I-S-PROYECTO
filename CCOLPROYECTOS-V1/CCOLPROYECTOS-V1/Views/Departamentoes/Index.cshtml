@@ -59,55 +59,93 @@
     <nav class="navbar container-fluid" style=" background-color:aliceblue">
         <ul class="nav navbar-nav">
 
-        <li>@Html.ActionLink("CARGOS", "Index", "Cargoes")</li>
-        <li>@Html.ActionLink("CLIENTE", "Index", "Clientes")</li>
-        <li>@Html.ActionLink("ESTADO", "Index", "EstadoSerProes")</li>
-        <li>@Html.ActionLink("LINEA DE TRABAJO", "Index", "LineaTrabajoes")</li>
-        <li>@Html.ActionLink("UBICACION", "Index", "Pais")</li>
-        <li>@Html.ActionLink("RECURSO TECNICO", "Index", "RecursoTecnicoes")</li>
-        <li>@Html.ActionLink("PERSONA", "Index", "Personas")</li>
-        <li>@Html.ActionLink("USUARIO", "Index", "Personas")</li>
-        <li>@Html.ActionLink("ADMIN", "Index", "Administradors")</li>
-    </ul>
+            <li>@Html.ActionLink("CARGOS", "Index", "Cargoes")</li>
+            <li>@Html.ActionLink("CLIENTE", "Index", "Clientes")</li>
+            <li>@Html.ActionLink("ESTADO", "Index", "EstadoSerProes")</li>
+            <li>@Html.ActionLink("LINEA DE TRABAJO", "Index", "LineaTrabajoes")</li>
+            <li>@Html.ActionLink("UBICACION", "Index", "Pais")</li>
+            <li>@Html.ActionLink("RECURSO TECNICO", "Index", "RecursoTecnicoes")</li>
+            <li>@Html.ActionLink("PERSONA", "Index", "Personas")</li>
+            <li>@Html.ActionLink("USUARIO", "Index", "Personas")</li>
+            <li>@Html.ActionLink("ADMIN", "Index", "Administradors")</li>
+        </ul>
+
+    </nav>
+    <h2 class="text-center " style="color:darkblue">DEPARTAMENTOS</h2>
+
+    <div class="container-fluid ">
+
+        <p>
+
+            <a href="@Url.Action("Create", "Departamentoes")" title="Editar datos" class="btn btn-primary">
+                <img src="https://previews.123rf.com/images/123vector/123vector1710/123vector171000257/88355140-ilustraci%C3%B3n-del-signo-m%C3%A1s-icono-de-c%C3%ADrculo-verde.jpg" width="20" height="20">
+
+                <span><strong>Agregar Departamento</strong></span>
+            </a>
+        </p>
+    </div>
+    <p></p>
+
+    <div class="input-group">
+        <span class="input-group-addon">Buscar</span>
+        <input id="entradafilter" type="text" class="form-control" placeholder="Ingresa el dato que desees buscar...">
+    </div><p></p>
+    <div class="col-md-12">
+        <table id="tblProduct" class="table table-striped table-bordered" width="100%">
+
+            <thead>
+                <tr>
+                    <th @Html.DisplayNameFor(model => model.Pais.nombrePais)>
+                        PAIS
+                    </th>
+                    <th @Html.DisplayNameFor(model => model.codigoDepartamento)>
+                        CÓDIGO
+                    </th>
+
+                    <th @Html.DisplayNameFor(model => model.nombreDepartamento)>
+                        DEPARTAMENTO
+                    </th>
+
+                    <th>ACCIONES</th>
+                </tr>
+            <tbody class="contenidobusqueda">
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td class="text-left">
+                            @Html.DisplayFor(modelItem => item.Pais.nombrePais)
+                        </td>
+                        <td class="text-center">
+
+                            @Html.DisplayFor(modelItem => item.codigoDepartamento)
+                        </td>
+
+                        <td class="text-left">
+                            @Html.DisplayFor(modelItem => item.nombreDepartamento)
+                        </td>
+
+                        <td class="text-center">
+                            <a href="@Url.Action("Edit", "Departamentoes",  new { id = item.id })" title="Editar datos" class="btn btn-sm btn-info"><img src="http://icons.iconarchive.com/icons/designcontest/outline/256/Pencil-icon.png" width="20" height="20"></a>
+                            <a href="@Url.Action("Delete", "Departamentoes",  new { id = item.id })" title="Eliminar" class="btn btn-sm btn-danger"><img src="https://findicons.com/files/icons/1580/devine_icons_part_2/128/trash_recyclebin_empty_closed.png" width="20" height="20"></a>
+                            <!--<a href="@Url.Action("Details", "Departamentoes",  new { id = item.id })" title="Ver Datos" class="btn btn-sm btn-success"><img src="https://cdn0.iconfinder.com/data/icons/files-documents/512/YPS__file_document_enlarge_magnifier_magnify_examine_read_paper_page_text-128.png" width="20" height="20"></a>-->
+                        </td>
+                    </tr>
 
 
-    
-</nav>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.codigoDepartamento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nombreDepartamento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pais.nombrePais)
-        </th>
-        <th></th>
-    </tr>
+                }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.codigoDepartamento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombreDepartamento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pais.nombrePais)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
-
-</table>
+        </table>
+        <a href="@Url.Action("Index", "Pais")" title="Pais" class="btn btn-primary">
+            <img src="https://cdn0.iconfinder.com/data/icons/files-documents/512/YPS__file_document_enlarge_magnifier_magnify_examine_read_paper_page_text-128.png" width="20" height="20">
+            <span><strong>PAÍS</strong></span>
+        </a>
+        <a href="@Url.Action("Index", "Ciudads")" title="Ciudad" class="btn btn-primary">
+            <img src="https://cdn0.iconfinder.com/data/icons/files-documents/512/YPS__file_document_enlarge_magnifier_magnify_examine_read_paper_page_text-128.png" width="20" height="20">
+            <span><strong>CIUDAD</strong></span>
+        </a>
+        <BR>
+    </div>
+    <BR>
+</body>
+<BR>

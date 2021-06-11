@@ -4,69 +4,50 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Servicio</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.codigoServicio)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.codigoServicio)
-        </dd>
+<div class=" jumbotron form-horizontal" style="        border: 4px solid #002F65">
+    <h2 class="text-center " style="color:darkblue">PROYECTOS</h2>
+    <h4 class="text-left ">¿Estas Seguro que desea eliminar este elemento?</h4>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.nombreServicio)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.nombreServicio)
-        </dd>
+    <div class="col-md-12">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.fechaServicio)
-        </dt>
+        <dl class="dl-horizontal form-group">
+            <dt>
+                <div class="col-md-2 text-right">
+                    CODIGO:
+                </div>
+            </dt>
+            <div class="col-md-10 text-left form-control">
+                @Html.DisplayFor(model => model.codigoServicio)
 
-        <dd>
-            @Html.DisplayFor(model => model.fechaServicio)
-        </dd>
+            </div>
+            <dt>
+                <div class="col-md-2 text-right">
+                    SERVICIO:
+                </div>
+            </dt>
+            <div class="col-md-10 text-left form-control">
+                @Html.DisplayFor(model => model.nombreServicio)
+            </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.valorServicio)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.valorServicio)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.lineaServicio)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.lineaServicio)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Usuario.correoUsuario)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Usuario.correoUsuario)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
+        </dl>
+    </div>
+    <br>
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
-
+        <br>
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+            <a href="@Url.Action("Index")" class="btn btn-primary">
+                <span><strong>Regresar a la lista</strong></span>
+            </a>
+
         </div>
+
     }
 </div>
