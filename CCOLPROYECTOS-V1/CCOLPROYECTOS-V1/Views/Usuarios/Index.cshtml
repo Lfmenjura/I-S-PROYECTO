@@ -1,0 +1,78 @@
+﻿@model IEnumerable<CCOLPROYECTOS_V1.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<nav class="navbar navbar-inverse" style=" background-color:aliceblue">
+    <ul class="nav navbar-nav">
+
+        <li>@Html.ActionLink("CARGOS", "Index", "Cargoes")</li>
+        <li>@Html.ActionLink("CLIENTE", "Index", "Clientes")</li>
+        <li>@Html.ActionLink("ESTADO", "Index", "EstadoSerProes")</li>
+        <li>@Html.ActionLink("LINEA DE TRABAJO", "Index", "LineaTrabajoes")</li>
+        <li>@Html.ActionLink("UBICACION", "Index", "Pais")</li>
+        <li>@Html.ActionLink("RECURSO TECNICO", "Index", "RecursoTecnicoes")</li>
+        <li>@Html.ActionLink("PERSONA", "Index", "Personas")</li>
+        <li>@Html.ActionLink("USUARIO", "Index", "Personas")</li>
+        <li>@Html.ActionLink("ADMIN", "Index", "Administradors")</li>
+    </ul>
+
+
+    
+</nav>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codigoUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.correoUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contrasenaUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Administrador.correoAdmin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cargo.nombreCargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Persona.nombrePersona)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigoUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.correoUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contrasenaUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Administrador.correoAdmin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cargo.nombreCargo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Persona.nombrePersona)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

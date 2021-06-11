@@ -1,0 +1,56 @@
+﻿@model CCOLPROYECTOS_V1.Cargo
+
+@{
+    ViewBag.Title = "Delete";
+}
+<div class=" jumbotron form-horizontal" style="        border: 4px solid #002F65">
+    <h2 class="text-center " style="color:darkblue">CARGOS</h2>
+    <h4 class="text-left ">¿Estas Seguro que quieres eliminar este elemento?</h4>
+
+
+    <div class="col-md-12">
+
+        <dl class="dl-horizontal form-group">
+            <dt>
+                <div class="col-md-2 text-right">
+                    CODIGO:
+                </div>
+
+            </dt>
+            <div class="col-md-10 text-left form-control">
+                @Html.DisplayFor(model => model.codCargo)
+
+            </div>
+
+            <dt>
+                <div class="col-md-2 text-right">
+                    CARGO:
+                </div>
+            </dt>
+
+            <div class="col-md-10 text-left form-control ">
+                @Html.DisplayFor(model => model.nombreCargo)
+            </div>
+
+
+
+        </dl>
+    </div>
+    <br>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <br >
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-danger" />
+            <a href="@Url.Action("Index")" class="btn btn-primary">
+                <span><strong>Regresar a la lista</strong></span>
+            </a>
+
+        </div>
+
+    }
+</div>
+
+        
+      

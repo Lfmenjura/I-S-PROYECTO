@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top" style="        background-color: white
+">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <dt>
+                    @Html.ActionLink("CCOL PROYECTOS S.A.S", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                </dt> 
+            </div>
+            <div class="navbar-collapse " style="        background-color: #002F65
+">
+                <dt>
+                    <ul class="nav navbar-nav">
+
+                        <li >@Html.ActionLink("ADMINISTRATIVO", "Index", "Cargoes")</li>
+                        <li>@Html.ActionLink("PROYECTOS", "Index", "Proyectoes")</li>
+                        <li>@Html.ActionLink("SERVICIOS", "Index", "Servicios")</li>
+
+
+                    </ul>
+                </dt>
+
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> CERRAR SESION</a></li>
+
+                    
+
+                </ul>
+            
+            </div>
+        </div>
+    </div>
+    <div class="container modal-footer">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>
+
+            </p>
+            <p>&copy; @DateTime.Now.Year - DERECHOS RESERVADOS CCOL PROYECTOS S.A.S</p>
+
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

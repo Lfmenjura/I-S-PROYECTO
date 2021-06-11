@@ -1,0 +1,1235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CCOLPROYECTOSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Administrador">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigoAdmin" Type="int" Nullable="false" />
+          <Property Name="correoAdmin" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="contraseñaAdmin" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="idPersona" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cargo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreCargo" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="codCargo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigoCiudad" Type="int" Nullable="false" />
+          <Property Name="nombreCiudad" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idDepartamento" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreCliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telefonoCliente" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="correoCliente" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="rutCliente" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigoDepartamento" Type="int" Nullable="false" />
+          <Property Name="nombreDepartamento" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="idPais" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EstadoSerPro">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreEstadoSerPro" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="codEstado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LineaTrabajo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombreLineaT" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigoPais" Type="int" Nullable="false" />
+          <Property Name="nombrePais" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cedulaPersona" Type="int" Nullable="false" />
+          <Property Name="nombrePersona" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="apellidoPersona" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="direccionPersona" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="telefonoPersona" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Proyecto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigoProyecto" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="nombreProyecto" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fechaProyecto" Type="date" Nullable="false" />
+          <Property Name="valorProyecto" Type="int" Nullable="false" />
+          <Property Name="lineaProyecto" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="idUsuario" Type="int" Nullable="false" />
+          <Property Name="idCliente" Type="int" />
+          <Property Name="idEstadoSP" Type="int" />
+          <Property Name="idCiudad" Type="int" />
+          <Property Name="idRecursoT" Type="int" />
+          <Property Name="idLineaT" Type="int" />
+        </EntityType>
+        <EntityType Name="RecursoTecnico">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tipoRecursoT" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="referenciaRecursoT" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="marcaRecursoT" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="valorRecursoT" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="descripRecursoT" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="SerPro">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idServicio" Type="int" />
+          <Property Name="idProyecto" Type="int" />
+          <Property Name="idCliente" Type="int" Nullable="false" />
+          <Property Name="idEstadoSP" Type="int" Nullable="false" />
+          <Property Name="idCiudad" Type="int" Nullable="false" />
+          <Property Name="idRecursoT" Type="int" Nullable="false" />
+          <Property Name="idLineaT" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigoServicio" Type="varchar" MaxLength="11" Nullable="false" />
+          <Property Name="nombreServicio" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="fechaServicio" Type="date" Nullable="false" />
+          <Property Name="valorServicio" Type="int" Nullable="false" />
+          <Property Name="lineaServicio" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="idUsuarioSer" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="codigoUsuario" Type="int" Nullable="false" />
+          <Property Name="correoUsuario" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="contrasenaUsuario" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="idCargo" Type="int" Nullable="false" />
+          <Property Name="idAdmin" Type="int" Nullable="false" />
+          <Property Name="idPersona" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Administrador_Perosna">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Administrador" Type="Self.Administrador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Administrador">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ciudad_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="idDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Departamento_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Departamento">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyceto_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyceto_EstadoSerPro">
+          <End Role="EstadoSerPro" Type="Self.EstadoSerPro" Multiplicity="0..1" />
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoSerPro">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="idEstadoSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyecto_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="0..1" />
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="idCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyecto_LineaTrabajo">
+          <End Role="LineaTrabajo" Type="Self.LineaTrabajo" Multiplicity="0..1" />
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LineaTrabajo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="idLineaT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyecto_RecursoTecnico">
+          <End Role="RecursoTecnico" Type="Self.RecursoTecnico" Multiplicity="0..1" />
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecursoTecnico">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="idRecursoT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyecto_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SerPro_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
+          <End Role="SerPro" Type="Self.SerPro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SerPro">
+              <PropertyRef Name="idCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SerPro_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="SerPro" Type="Self.SerPro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SerPro">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SerPro_EstadoSerPro">
+          <End Role="EstadoSerPro" Type="Self.EstadoSerPro" Multiplicity="1" />
+          <End Role="SerPro" Type="Self.SerPro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoSerPro">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SerPro">
+              <PropertyRef Name="idEstadoSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SerPro_LineaTrabajo">
+          <End Role="LineaTrabajo" Type="Self.LineaTrabajo" Multiplicity="1" />
+          <End Role="SerPro" Type="Self.SerPro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LineaTrabajo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SerPro">
+              <PropertyRef Name="idLineaT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SerPro_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="0..1" />
+          <End Role="SerPro" Type="Self.SerPro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SerPro">
+              <PropertyRef Name="idProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SerPro_RecursoTecnico">
+          <End Role="RecursoTecnico" Type="Self.RecursoTecnico" Multiplicity="1" />
+          <End Role="SerPro" Type="Self.SerPro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecursoTecnico">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SerPro">
+              <PropertyRef Name="idRecursoT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SerPro_Servicio">
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="0..1" />
+          <End Role="SerPro" Type="Self.SerPro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SerPro">
+              <PropertyRef Name="idServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="idUsuarioSer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Administrador">
+          <End Role="Administrador" Type="Self.Administrador" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrador">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idAdmin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Cargo">
+          <End Role="Cargo" Type="Self.Cargo" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idCargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Persona">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CCOLPROYECTOSModelStoreContainer">
+          <EntitySet Name="Administrador" EntityType="Self.Administrador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cargo" EntityType="Self.Cargo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EstadoSerPro" EntityType="Self.EstadoSerPro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LineaTrabajo" EntityType="Self.LineaTrabajo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Proyecto" EntityType="Self.Proyecto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RecursoTecnico" EntityType="Self.RecursoTecnico" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SerPro" EntityType="Self.SerPro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servicio" EntityType="Self.Servicio" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Administrador_Perosna" Association="Self.FK_Administrador_Perosna">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Administrador" EntitySet="Administrador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ciudad_Departamento" Association="Self.FK_Ciudad_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Departamento_Pais" Association="Self.FK_Departamento_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Departamento" EntitySet="Departamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyceto_Cliente" Association="Self.FK_Proyceto_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyceto_EstadoSerPro" Association="Self.FK_Proyceto_EstadoSerPro">
+            <End Role="EstadoSerPro" EntitySet="EstadoSerPro" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_Ciudad" Association="Self.FK_Proyecto_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_LineaTrabajo" Association="Self.FK_Proyecto_LineaTrabajo">
+            <End Role="LineaTrabajo" EntitySet="LineaTrabajo" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_RecursoTecnico" Association="Self.FK_Proyecto_RecursoTecnico">
+            <End Role="RecursoTecnico" EntitySet="RecursoTecnico" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_Usuario" Association="Self.FK_Proyecto_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SerPro_Ciudad" Association="Self.FK_SerPro_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="SerPro" EntitySet="SerPro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SerPro_Cliente" Association="Self.FK_SerPro_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="SerPro" EntitySet="SerPro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SerPro_EstadoSerPro" Association="Self.FK_SerPro_EstadoSerPro">
+            <End Role="EstadoSerPro" EntitySet="EstadoSerPro" />
+            <End Role="SerPro" EntitySet="SerPro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SerPro_LineaTrabajo" Association="Self.FK_SerPro_LineaTrabajo">
+            <End Role="LineaTrabajo" EntitySet="LineaTrabajo" />
+            <End Role="SerPro" EntitySet="SerPro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SerPro_Proyecto" Association="Self.FK_SerPro_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="SerPro" EntitySet="SerPro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SerPro_RecursoTecnico" Association="Self.FK_SerPro_RecursoTecnico">
+            <End Role="RecursoTecnico" EntitySet="RecursoTecnico" />
+            <End Role="SerPro" EntitySet="SerPro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SerPro_Servicio" Association="Self.FK_SerPro_Servicio">
+            <End Role="Servicio" EntitySet="Servicio" />
+            <End Role="SerPro" EntitySet="SerPro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Usuario" Association="Self.FK_Servicio_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Administrador" Association="Self.FK_Usuario_Administrador">
+            <End Role="Administrador" EntitySet="Administrador" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Cargo" Association="Self.FK_Usuario_Cargo">
+            <End Role="Cargo" EntitySet="Cargo" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Persona" Association="Self.FK_Usuario_Persona">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CCOLPROYECTOSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Administrador">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigoAdmin" Type="Int32" Nullable="false" />
+          <Property Name="correoAdmin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contraseñaAdmin" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idPersona" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK_Administrador_Perosna" FromRole="Administrador" ToRole="Persona" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Administrador" FromRole="Administrador" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Cargo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreCargo" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="codCargo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Cargo" FromRole="Cargo" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Ciudad">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigoCiudad" Type="Int32" Nullable="false" />
+          <Property Name="nombreCiudad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idDepartamento" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK_Ciudad_Departamento" FromRole="Ciudad" ToRole="Departamento" />
+          <NavigationProperty Name="SerPro" Relationship="Self.FK_SerPro_Ciudad" FromRole="Ciudad" ToRole="SerPro" />
+          <NavigationProperty Name="Proyecto" Relationship="CCOLPROYECTOSModel.FK_Proyecto_Ciudad" FromRole="Ciudad" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefonoCliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="correoCliente" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="rutCliente" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SerPro" Relationship="Self.FK_SerPro_Cliente" FromRole="Cliente" ToRole="SerPro" />
+          <NavigationProperty Name="Proyecto" Relationship="CCOLPROYECTOSModel.FK_Proyceto_Cliente" FromRole="Cliente" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="Departamento">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigoDepartamento" Type="Int32" Nullable="false" />
+          <Property Name="nombreDepartamento" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idPais" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.FK_Ciudad_Departamento" FromRole="Departamento" ToRole="Ciudad" />
+          <NavigationProperty Name="Pais" Relationship="Self.FK_Departamento_Pais" FromRole="Departamento" ToRole="Pais" />
+        </EntityType>
+        <EntityType Name="EstadoSerPro">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreEstadoSerPro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="codEstado" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SerPro" Relationship="Self.FK_SerPro_EstadoSerPro" FromRole="EstadoSerPro" ToRole="SerPro" />
+          <NavigationProperty Name="Proyecto" Relationship="CCOLPROYECTOSModel.FK_Proyceto_EstadoSerPro" FromRole="EstadoSerPro" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="LineaTrabajo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombreLineaT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="SerPro" Relationship="Self.FK_SerPro_LineaTrabajo" FromRole="LineaTrabajo" ToRole="SerPro" />
+          <NavigationProperty Name="Proyecto" Relationship="CCOLPROYECTOSModel.FK_Proyecto_LineaTrabajo" FromRole="LineaTrabajo" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigoPais" Type="Int32" Nullable="false" />
+          <Property Name="nombrePais" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Departamento" Relationship="Self.FK_Departamento_Pais" FromRole="Pais" ToRole="Departamento" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cedulaPersona" Type="Int32" Nullable="false" />
+          <Property Name="nombrePersona" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="apellidoPersona" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="direccionPersona" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telefonoPersona" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Administrador" Relationship="Self.FK_Administrador_Perosna" FromRole="Persona" ToRole="Administrador" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Usuario_Persona" FromRole="Persona" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Proyecto">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigoProyecto" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombreProyecto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fechaProyecto" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="valorProyecto" Type="Int32" Nullable="false" />
+          <Property Name="lineaProyecto" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idUsuario" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Proyecto_Usuario" FromRole="Proyecto" ToRole="Usuario" />
+          <NavigationProperty Name="SerPro" Relationship="Self.FK_SerPro_Proyecto" FromRole="Proyecto" ToRole="SerPro" />
+          <Property Name="idCliente" Type="Int32" />
+          <Property Name="idEstadoSP" Type="Int32" />
+          <Property Name="idCiudad" Type="Int32" />
+          <Property Name="idRecursoT" Type="Int32" />
+          <Property Name="idLineaT" Type="Int32" />
+          <NavigationProperty Name="Ciudad" Relationship="CCOLPROYECTOSModel.FK_Proyecto_Ciudad" FromRole="Proyecto" ToRole="Ciudad" />
+          <NavigationProperty Name="Cliente" Relationship="CCOLPROYECTOSModel.FK_Proyceto_Cliente" FromRole="Proyecto" ToRole="Cliente" />
+          <NavigationProperty Name="EstadoSerPro" Relationship="CCOLPROYECTOSModel.FK_Proyceto_EstadoSerPro" FromRole="Proyecto" ToRole="EstadoSerPro" />
+          <NavigationProperty Name="LineaTrabajo" Relationship="CCOLPROYECTOSModel.FK_Proyecto_LineaTrabajo" FromRole="Proyecto" ToRole="LineaTrabajo" />
+          <NavigationProperty Name="RecursoTecnico" Relationship="CCOLPROYECTOSModel.FK_Proyecto_RecursoTecnico" FromRole="Proyecto" ToRole="RecursoTecnico" />
+        </EntityType>
+        <EntityType Name="RecursoTecnico">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tipoRecursoT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="referenciaRecursoT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="marcaRecursoT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="valorRecursoT" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="descripRecursoT" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SerPro" Relationship="Self.FK_SerPro_RecursoTecnico" FromRole="RecursoTecnico" ToRole="SerPro" />
+          <NavigationProperty Name="Proyecto" Relationship="CCOLPROYECTOSModel.FK_Proyecto_RecursoTecnico" FromRole="RecursoTecnico" ToRole="Proyecto" />
+        </EntityType>
+        <EntityType Name="SerPro">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idServicio" Type="Int32" />
+          <Property Name="idProyecto" Type="Int32" />
+          <Property Name="idCliente" Type="Int32" Nullable="false" />
+          <Property Name="idEstadoSP" Type="Int32" Nullable="false" />
+          <Property Name="idCiudad" Type="Int32" Nullable="false" />
+          <Property Name="idRecursoT" Type="Int32" Nullable="false" />
+          <Property Name="idLineaT" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ciudad" Relationship="Self.FK_SerPro_Ciudad" FromRole="SerPro" ToRole="Ciudad" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_SerPro_Cliente" FromRole="SerPro" ToRole="Cliente" />
+          <NavigationProperty Name="EstadoSerPro" Relationship="Self.FK_SerPro_EstadoSerPro" FromRole="SerPro" ToRole="EstadoSerPro" />
+          <NavigationProperty Name="LineaTrabajo" Relationship="Self.FK_SerPro_LineaTrabajo" FromRole="SerPro" ToRole="LineaTrabajo" />
+          <NavigationProperty Name="Proyecto" Relationship="Self.FK_SerPro_Proyecto" FromRole="SerPro" ToRole="Proyecto" />
+          <NavigationProperty Name="RecursoTecnico" Relationship="Self.FK_SerPro_RecursoTecnico" FromRole="SerPro" ToRole="RecursoTecnico" />
+          <NavigationProperty Name="Servicio" Relationship="Self.FK_SerPro_Servicio" FromRole="SerPro" ToRole="Servicio" />
+        </EntityType>
+        <EntityType Name="Servicio">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigoServicio" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nombreServicio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fechaServicio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="valorServicio" Type="Int32" Nullable="false" />
+          <Property Name="lineaServicio" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idUsuarioSer" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="SerPro" Relationship="Self.FK_SerPro_Servicio" FromRole="Servicio" ToRole="SerPro" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Servicio_Usuario" FromRole="Servicio" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigoUsuario" Type="Int32" Nullable="false" />
+          <Property Name="correoUsuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contrasenaUsuario" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idCargo" Type="Int32" Nullable="false" />
+          <Property Name="idAdmin" Type="Int32" Nullable="false" />
+          <Property Name="idPersona" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Administrador" Relationship="Self.FK_Usuario_Administrador" FromRole="Usuario" ToRole="Administrador" />
+          <NavigationProperty Name="Cargo" Relationship="Self.FK_Usuario_Cargo" FromRole="Usuario" ToRole="Cargo" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK_Usuario_Persona" FromRole="Usuario" ToRole="Persona" />
+          <NavigationProperty Name="Proyecto" Relationship="Self.FK_Proyecto_Usuario" FromRole="Usuario" ToRole="Proyecto" />
+          <NavigationProperty Name="Servicio" Relationship="Self.FK_Servicio_Usuario" FromRole="Usuario" ToRole="Servicio" />
+        </EntityType>
+        <Association Name="FK_Administrador_Perosna">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Administrador" Type="Self.Administrador" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Administrador">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Administrador">
+          <End Role="Administrador" Type="Self.Administrador" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Administrador">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idAdmin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Cargo">
+          <End Role="Cargo" Type="Self.Cargo" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cargo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idCargo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ciudad_Departamento">
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="1" />
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Departamento">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Ciudad">
+              <PropertyRef Name="idDepartamento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SerPro_Ciudad">
+          <End Role="Ciudad" Type="Self.Ciudad" Multiplicity="1" />
+          <End Role="SerPro" Type="Self.SerPro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SerPro">
+              <PropertyRef Name="idCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SerPro_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="SerPro" Type="Self.SerPro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SerPro">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Departamento_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="Departamento" Type="Self.Departamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Departamento">
+              <PropertyRef Name="idPais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SerPro_EstadoSerPro">
+          <End Role="EstadoSerPro" Type="Self.EstadoSerPro" Multiplicity="1" />
+          <End Role="SerPro" Type="Self.SerPro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoSerPro">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SerPro">
+              <PropertyRef Name="idEstadoSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SerPro_LineaTrabajo">
+          <End Role="LineaTrabajo" Type="Self.LineaTrabajo" Multiplicity="1" />
+          <End Role="SerPro" Type="Self.SerPro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LineaTrabajo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SerPro">
+              <PropertyRef Name="idLineaT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_Persona">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="idPersona" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyecto_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="idUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SerPro_Proyecto">
+          <End Role="Proyecto" Type="Self.Proyecto" Multiplicity="0..1" />
+          <End Role="SerPro" Type="Self.SerPro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proyecto">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SerPro">
+              <PropertyRef Name="idProyecto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SerPro_RecursoTecnico">
+          <End Role="RecursoTecnico" Type="Self.RecursoTecnico" Multiplicity="1" />
+          <End Role="SerPro" Type="Self.SerPro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecursoTecnico">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SerPro">
+              <PropertyRef Name="idRecursoT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SerPro_Servicio">
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="0..1" />
+          <End Role="SerPro" Type="Self.SerPro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Servicio">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SerPro">
+              <PropertyRef Name="idServicio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Servicio_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Servicio" Type="Self.Servicio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Servicio">
+              <PropertyRef Name="idUsuarioSer" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CCOLPROYECTOSEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Administrador" EntityType="Self.Administrador" />
+          <EntitySet Name="Cargo" EntityType="Self.Cargo" />
+          <EntitySet Name="Ciudad" EntityType="Self.Ciudad" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Departamento" EntityType="Self.Departamento" />
+          <EntitySet Name="EstadoSerPro" EntityType="Self.EstadoSerPro" />
+          <EntitySet Name="LineaTrabajo" EntityType="Self.LineaTrabajo" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" />
+          <EntitySet Name="Proyecto" EntityType="Self.Proyecto" />
+          <EntitySet Name="RecursoTecnico" EntityType="Self.RecursoTecnico" />
+          <EntitySet Name="SerPro" EntityType="Self.SerPro" />
+          <EntitySet Name="Servicio" EntityType="Self.Servicio" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_Administrador_Perosna" Association="Self.FK_Administrador_Perosna">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Administrador" EntitySet="Administrador" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Administrador" Association="Self.FK_Usuario_Administrador">
+            <End Role="Administrador" EntitySet="Administrador" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Cargo" Association="Self.FK_Usuario_Cargo">
+            <End Role="Cargo" EntitySet="Cargo" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ciudad_Departamento" Association="Self.FK_Ciudad_Departamento">
+            <End Role="Departamento" EntitySet="Departamento" />
+            <End Role="Ciudad" EntitySet="Ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SerPro_Ciudad" Association="Self.FK_SerPro_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="SerPro" EntitySet="SerPro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SerPro_Cliente" Association="Self.FK_SerPro_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="SerPro" EntitySet="SerPro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Departamento_Pais" Association="Self.FK_Departamento_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Departamento" EntitySet="Departamento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SerPro_EstadoSerPro" Association="Self.FK_SerPro_EstadoSerPro">
+            <End Role="EstadoSerPro" EntitySet="EstadoSerPro" />
+            <End Role="SerPro" EntitySet="SerPro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SerPro_LineaTrabajo" Association="Self.FK_SerPro_LineaTrabajo">
+            <End Role="LineaTrabajo" EntitySet="LineaTrabajo" />
+            <End Role="SerPro" EntitySet="SerPro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_Persona" Association="Self.FK_Usuario_Persona">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_Usuario" Association="Self.FK_Proyecto_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SerPro_Proyecto" Association="Self.FK_SerPro_Proyecto">
+            <End Role="Proyecto" EntitySet="Proyecto" />
+            <End Role="SerPro" EntitySet="SerPro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SerPro_RecursoTecnico" Association="Self.FK_SerPro_RecursoTecnico">
+            <End Role="RecursoTecnico" EntitySet="RecursoTecnico" />
+            <End Role="SerPro" EntitySet="SerPro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SerPro_Servicio" Association="Self.FK_SerPro_Servicio">
+            <End Role="Servicio" EntitySet="Servicio" />
+            <End Role="SerPro" EntitySet="SerPro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Servicio_Usuario" Association="Self.FK_Servicio_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Servicio" EntitySet="Servicio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_Ciudad" Association="CCOLPROYECTOSModel.FK_Proyecto_Ciudad">
+            <End Role="Ciudad" EntitySet="Ciudad" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyceto_Cliente" Association="CCOLPROYECTOSModel.FK_Proyceto_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyceto_EstadoSerPro" Association="CCOLPROYECTOSModel.FK_Proyceto_EstadoSerPro">
+            <End Role="EstadoSerPro" EntitySet="EstadoSerPro" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_LineaTrabajo" Association="CCOLPROYECTOSModel.FK_Proyecto_LineaTrabajo">
+            <End Role="LineaTrabajo" EntitySet="LineaTrabajo" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Proyecto_RecursoTecnico" Association="CCOLPROYECTOSModel.FK_Proyecto_RecursoTecnico">
+            <End Role="RecursoTecnico" EntitySet="RecursoTecnico" />
+            <End Role="Proyecto" EntitySet="Proyecto" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_Proyecto_Ciudad">
+          <End Type="CCOLPROYECTOSModel.Ciudad" Role="Ciudad" Multiplicity="0..1" />
+          <End Type="CCOLPROYECTOSModel.Proyecto" Role="Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ciudad">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="idCiudad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyceto_Cliente">
+          <End Type="CCOLPROYECTOSModel.Cliente" Role="Cliente" Multiplicity="0..1" />
+          <End Type="CCOLPROYECTOSModel.Proyecto" Role="Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="idCliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyceto_EstadoSerPro">
+          <End Type="CCOLPROYECTOSModel.EstadoSerPro" Role="EstadoSerPro" Multiplicity="0..1" />
+          <End Type="CCOLPROYECTOSModel.Proyecto" Role="Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EstadoSerPro">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="idEstadoSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyecto_LineaTrabajo">
+          <End Type="CCOLPROYECTOSModel.LineaTrabajo" Role="LineaTrabajo" Multiplicity="0..1" />
+          <End Type="CCOLPROYECTOSModel.Proyecto" Role="Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LineaTrabajo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="idLineaT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Proyecto_RecursoTecnico">
+          <End Type="CCOLPROYECTOSModel.RecursoTecnico" Role="RecursoTecnico" Multiplicity="0..1" />
+          <End Type="CCOLPROYECTOSModel.Proyecto" Role="Proyecto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecursoTecnico">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Proyecto">
+              <PropertyRef Name="idRecursoT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CCOLPROYECTOSModelStoreContainer" CdmEntityContainer="CCOLPROYECTOSEntities1">
+          <EntitySetMapping Name="Administrador">
+            <EntityTypeMapping TypeName="CCOLPROYECTOSModel.Administrador">
+              <MappingFragment StoreEntitySet="Administrador">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigoAdmin" ColumnName="codigoAdmin" />
+                <ScalarProperty Name="correoAdmin" ColumnName="correoAdmin" />
+                <ScalarProperty Name="contraseñaAdmin" ColumnName="contraseñaAdmin" />
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cargo">
+            <EntityTypeMapping TypeName="CCOLPROYECTOSModel.Cargo">
+              <MappingFragment StoreEntitySet="Cargo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombreCargo" ColumnName="nombreCargo" />
+                <ScalarProperty Name="codCargo" ColumnName="codCargo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ciudad">
+            <EntityTypeMapping TypeName="CCOLPROYECTOSModel.Ciudad">
+              <MappingFragment StoreEntitySet="Ciudad">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigoCiudad" ColumnName="codigoCiudad" />
+                <ScalarProperty Name="nombreCiudad" ColumnName="nombreCiudad" />
+                <ScalarProperty Name="idDepartamento" ColumnName="idDepartamento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="CCOLPROYECTOSModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombreCliente" ColumnName="nombreCliente" />
+                <ScalarProperty Name="telefonoCliente" ColumnName="telefonoCliente" />
+                <ScalarProperty Name="correoCliente" ColumnName="correoCliente" />
+                <ScalarProperty Name="rutCliente" ColumnName="rutCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Departamento">
+            <EntityTypeMapping TypeName="CCOLPROYECTOSModel.Departamento">
+              <MappingFragment StoreEntitySet="Departamento">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigoDepartamento" ColumnName="codigoDepartamento" />
+                <ScalarProperty Name="nombreDepartamento" ColumnName="nombreDepartamento" />
+                <ScalarProperty Name="idPais" ColumnName="idPais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EstadoSerPro">
+            <EntityTypeMapping TypeName="CCOLPROYECTOSModel.EstadoSerPro">
+              <MappingFragment StoreEntitySet="EstadoSerPro">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombreEstadoSerPro" ColumnName="nombreEstadoSerPro" />
+                <ScalarProperty Name="codEstado" ColumnName="codEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LineaTrabajo">
+            <EntityTypeMapping TypeName="CCOLPROYECTOSModel.LineaTrabajo">
+              <MappingFragment StoreEntitySet="LineaTrabajo">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nombreLineaT" ColumnName="nombreLineaT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="CCOLPROYECTOSModel.Pais">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigoPais" ColumnName="codigoPais" />
+                <ScalarProperty Name="nombrePais" ColumnName="nombrePais" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persona">
+            <EntityTypeMapping TypeName="CCOLPROYECTOSModel.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="cedulaPersona" ColumnName="cedulaPersona" />
+                <ScalarProperty Name="nombrePersona" ColumnName="nombrePersona" />
+                <ScalarProperty Name="apellidoPersona" ColumnName="apellidoPersona" />
+                <ScalarProperty Name="direccionPersona" ColumnName="direccionPersona" />
+                <ScalarProperty Name="telefonoPersona" ColumnName="telefonoPersona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Proyecto">
+            <EntityTypeMapping TypeName="CCOLPROYECTOSModel.Proyecto">
+              <MappingFragment StoreEntitySet="Proyecto">
+                <ScalarProperty Name="idLineaT" ColumnName="idLineaT" />
+                <ScalarProperty Name="idRecursoT" ColumnName="idRecursoT" />
+                <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
+                <ScalarProperty Name="idEstadoSP" ColumnName="idEstadoSP" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigoProyecto" ColumnName="codigoProyecto" />
+                <ScalarProperty Name="nombreProyecto" ColumnName="nombreProyecto" />
+                <ScalarProperty Name="fechaProyecto" ColumnName="fechaProyecto" />
+                <ScalarProperty Name="valorProyecto" ColumnName="valorProyecto" />
+                <ScalarProperty Name="lineaProyecto" ColumnName="lineaProyecto" />
+                <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RecursoTecnico">
+            <EntityTypeMapping TypeName="CCOLPROYECTOSModel.RecursoTecnico">
+              <MappingFragment StoreEntitySet="RecursoTecnico">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tipoRecursoT" ColumnName="tipoRecursoT" />
+                <ScalarProperty Name="referenciaRecursoT" ColumnName="referenciaRecursoT" />
+                <ScalarProperty Name="marcaRecursoT" ColumnName="marcaRecursoT" />
+                <ScalarProperty Name="valorRecursoT" ColumnName="valorRecursoT" />
+                <ScalarProperty Name="descripRecursoT" ColumnName="descripRecursoT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SerPro">
+            <EntityTypeMapping TypeName="CCOLPROYECTOSModel.SerPro">
+              <MappingFragment StoreEntitySet="SerPro">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idServicio" ColumnName="idServicio" />
+                <ScalarProperty Name="idProyecto" ColumnName="idProyecto" />
+                <ScalarProperty Name="idCliente" ColumnName="idCliente" />
+                <ScalarProperty Name="idEstadoSP" ColumnName="idEstadoSP" />
+                <ScalarProperty Name="idCiudad" ColumnName="idCiudad" />
+                <ScalarProperty Name="idRecursoT" ColumnName="idRecursoT" />
+                <ScalarProperty Name="idLineaT" ColumnName="idLineaT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servicio">
+            <EntityTypeMapping TypeName="CCOLPROYECTOSModel.Servicio">
+              <MappingFragment StoreEntitySet="Servicio">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigoServicio" ColumnName="codigoServicio" />
+                <ScalarProperty Name="nombreServicio" ColumnName="nombreServicio" />
+                <ScalarProperty Name="fechaServicio" ColumnName="fechaServicio" />
+                <ScalarProperty Name="valorServicio" ColumnName="valorServicio" />
+                <ScalarProperty Name="lineaServicio" ColumnName="lineaServicio" />
+                <ScalarProperty Name="idUsuarioSer" ColumnName="idUsuarioSer" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="CCOLPROYECTOSModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="CCOLPROYECTOSModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="codigoUsuario" ColumnName="codigoUsuario" />
+                <ScalarProperty Name="correoUsuario" ColumnName="correoUsuario" />
+                <ScalarProperty Name="contrasenaUsuario" ColumnName="contrasenaUsuario" />
+                <ScalarProperty Name="idCargo" ColumnName="idCargo" />
+                <ScalarProperty Name="idAdmin" ColumnName="idAdmin" />
+                <ScalarProperty Name="idPersona" ColumnName="idPersona" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

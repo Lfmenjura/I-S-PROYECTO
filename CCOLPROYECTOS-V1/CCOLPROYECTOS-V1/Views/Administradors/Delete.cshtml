@@ -1,0 +1,59 @@
+﻿@model CCOLPROYECTOS_V1.Administrador
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<div class="col-md-12">
+    <h3>ELIMINAR</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.codigoAdmin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.codigoAdmin)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.correoAdmin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.correoAdmin)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.contraseñaAdmin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.contraseñaAdmin)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Persona.nombrePersona)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Persona.nombrePersona)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-danger" />
+                <a href="@Url.Action("Index")" class="btn btn-warning">
+                    <span><strong>Regresar</strong></span>
+                </a>
+                @*@Html.ActionLink("Back to List", "Index")*@
+            </div>
+        }
+    </div>
+</div>

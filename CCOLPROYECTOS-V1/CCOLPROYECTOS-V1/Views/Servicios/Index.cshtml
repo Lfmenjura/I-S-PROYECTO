@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CCOLPROYECTOS_V1.Servicio>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codigoServicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreServicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaServicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.valorServicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lineaServicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.correoUsuario)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigoServicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreServicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaServicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.valorServicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lineaServicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.correoUsuario)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

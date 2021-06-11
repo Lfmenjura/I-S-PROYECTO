@@ -1,0 +1,74 @@
+﻿@model CCOLPROYECTOS_V1.SerPro
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>SerPro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ciudad.nombreCiudad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ciudad.nombreCiudad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cliente.nombreCliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cliente.nombreCliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoSerPro.nombreEstadoSerPro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoSerPro.nombreEstadoSerPro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LineaTrabajo.nombreLineaT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LineaTrabajo.nombreLineaT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Proyecto.codigoProyecto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Proyecto.codigoProyecto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecursoTecnico.tipoRecursoT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecursoTecnico.tipoRecursoT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Servicio.codigoServicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Servicio.codigoServicio)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

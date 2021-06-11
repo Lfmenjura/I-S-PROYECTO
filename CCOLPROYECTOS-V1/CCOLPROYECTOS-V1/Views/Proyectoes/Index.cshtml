@@ -1,0 +1,93 @@
+﻿@model IEnumerable<CCOLPROYECTOS_V1.Proyecto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codigoProyecto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreProyecto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fechaProyecto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.valorProyecto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lineaProyecto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Usuario.correoUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ciudad.nombreCiudad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cliente.nombreCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoSerPro.nombreEstadoSerPro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LineaTrabajo.nombreLineaT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecursoTecnico.tipoRecursoT)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigoProyecto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreProyecto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fechaProyecto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.valorProyecto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lineaProyecto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.correoUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ciudad.nombreCiudad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cliente.nombreCliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstadoSerPro.nombreEstadoSerPro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LineaTrabajo.nombreLineaT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecursoTecnico.tipoRecursoT)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>

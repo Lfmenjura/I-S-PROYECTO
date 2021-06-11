@@ -1,0 +1,58 @@
+﻿@model CCOLPROYECTOS_V1.RecursoTecnico
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>RecursoTecnico</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tipoRecursoT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipoRecursoT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.referenciaRecursoT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.referenciaRecursoT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.marcaRecursoT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.marcaRecursoT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.valorRecursoT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.valorRecursoT)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descripRecursoT)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripRecursoT)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

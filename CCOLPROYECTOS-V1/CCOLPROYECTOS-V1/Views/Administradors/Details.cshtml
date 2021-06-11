@@ -1,0 +1,58 @@
+﻿@model CCOLPROYECTOS_V1.Administrador
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Observa Los Siguientes Detalles:</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.codigoAdmin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codigoAdmin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.correoAdmin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.correoAdmin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contraseñaAdmin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contraseñaAdmin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Persona.nombrePersona)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Persona.nombrePersona)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <a href="@Url.Action("Edit", "Administradors", new { id = Model.id })" class="btn btn-primary">
+                <span><strong>Editar Datos</strong></span>
+            </a>
+            <a href="@Url.Action("Index")" class="btn btn-info">
+                <span><strong>Regresar a la Lista</strong></span>
+            </a>
+        </div>
+
+</p>

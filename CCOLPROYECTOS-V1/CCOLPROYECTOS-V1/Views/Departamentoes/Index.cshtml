@@ -1,0 +1,113 @@
+﻿@model IEnumerable<CCOLPROYECTOS_V1.Departamento>
+
+@{
+    ViewBag.Title = "Index";
+}
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="~/Scripts/jquery-1.9.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/employee.js"></script>
+    <title>CCOL PROYCETOS </title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js" type="text/javascript"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#entradafilter').keyup(function () {
+                var rex = new RegExp($(this).val(), 'i');
+                $('.contenidobusqueda tr').hide();
+                $('.contenidobusqueda tr').filter(function () {
+                    return rex.test($(this).text());
+                }).show();
+
+            })
+
+        })
+    </script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+
+</head>
+<p>
+
+</p>
+<body>
+    <nav class="navbar container-fluid" style=" background-color:aliceblue">
+        <ul class="nav navbar-nav">
+
+        <li>@Html.ActionLink("CARGOS", "Index", "Cargoes")</li>
+        <li>@Html.ActionLink("CLIENTE", "Index", "Clientes")</li>
+        <li>@Html.ActionLink("ESTADO", "Index", "EstadoSerProes")</li>
+        <li>@Html.ActionLink("LINEA DE TRABAJO", "Index", "LineaTrabajoes")</li>
+        <li>@Html.ActionLink("UBICACION", "Index", "Pais")</li>
+        <li>@Html.ActionLink("RECURSO TECNICO", "Index", "RecursoTecnicoes")</li>
+        <li>@Html.ActionLink("PERSONA", "Index", "Personas")</li>
+        <li>@Html.ActionLink("USUARIO", "Index", "Personas")</li>
+        <li>@Html.ActionLink("ADMIN", "Index", "Administradors")</li>
+    </ul>
+
+
+    
+</nav>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codigoDepartamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombreDepartamento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pais.nombrePais)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigoDepartamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreDepartamento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pais.nombrePais)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id })
+        </td>
+    </tr>
+}
+
+</table>
